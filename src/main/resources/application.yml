@@ -10,11 +10,11 @@ spring:
       ddl-auto: create  # entity 어노테이션 으로 테이블 생성
     properties:
       hibernate:
-#        show_sql: true
         format_sql: true
+        show_sql: true
 
 
 logging:
   level:
     org.hibernate.sql: debug
-    org.hibernate.type: trace # 로그남기기
+    #org.hibernate.type: trace # 로그남기기

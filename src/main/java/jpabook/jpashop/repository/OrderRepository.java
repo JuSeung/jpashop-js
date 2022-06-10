@@ -71,8 +71,7 @@ public class OrderRepository {
     }
 
     /**
-     * JPA Criteria
-     * 실무에서 사용 하기 어렵다. 유지보수 어려움
+     * JPA Criteria 실무에서 사용 하기 어렵다. 유지보수 어려움
      */
     public List<Order> findAllByCriteria(OrderSearch orderSearch) {
         CriteriaBuilder cb = em.getCriteriaBuilder();
@@ -99,4 +98,21 @@ public class OrderRepository {
         return query.getResultList();
     }
 
+    public List<Order> findAllWithMemberDelivery() {
+        return em.createQuery("select o from Order o" +
+                        " join fetch o.member m" +
+                        " join fetch o.delivery d", Order.class)
+                .getResultList();
+    }
+
+
+    public List<Order> findAllWithItem() {
+        return em.createQuery(
+                "select distinct o from Order o "
+                        + "join fetch o.member m "
+                        + "join fetch o.delivery d "
+                        + "join fetch o.orderItems oi "
+                        + "join fetch oi.item i", Order.class)
+                .getResultList();
+    }
 }
