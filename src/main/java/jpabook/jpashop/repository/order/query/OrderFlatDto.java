@@ -11,7 +11,7 @@ public class OrderFlatDto {
 
     private Long orderId;
     private String name;
-    private LocalDateTime localDateTime;
+    private LocalDateTime orderDate;
     private OrderStatus orderStatus;
     private Address address;
 
@@ -24,7 +24,7 @@ public class OrderFlatDto {
                         String itemName, int orderPrice, int count) {
         this.orderId = orderId;
         this.name = name;
-        this.localDateTime = localDateTime;
+        this.orderDate = localDateTime;
         this.orderStatus = orderStatus;
         this.address = address;
         this.itemName = itemName;
